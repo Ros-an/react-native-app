@@ -1,8 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import Home from "./screens/Home/Home";
-import Details from "./screens/Details/Details";
+import Home from "./screens/Home";
+import Details from "./screens/Details";
 
 const Stack = createStackNavigator();
 const theme = {
@@ -20,7 +20,8 @@ function App() {
     InterRegular: require("./assets/fonts/Inter-Regular.ttf"),
     InterSemiBold: require("./assets/fonts/Inter-SemiBold.ttf"),
   });
-  if (loaded) return null;
+
+  if (!loaded) return null;
   return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator

@@ -6,7 +6,7 @@ import {
   ImageSourcePropType,
 } from "react-native";
 import React from "react";
-import { COLORS, SHADOWS, SIZES } from "../constants";
+import { COLORS, FONTS, SHADOWS, SIZES } from "../constants";
 
 export interface CirBtnProps {
   handlePress?: any;
@@ -43,10 +43,38 @@ export const CircularButton = ({
   );
 };
 
-export const RectButton = () => {
+export interface RectBtnProps {
+  handlePress?: () => void;
+  minWidth: number;
+  fontSize: number;
+}
+export const RectButton = ({
+  fontSize,
+  minWidth,
+  handlePress,
+  ...props
+}: RectBtnProps) => {
   return (
-    <View>
-      <Text>Circular</Text>
-    </View>
+    <TouchableOpacity
+      style={{
+        backgroundColor: COLORS.primary,
+        borderRadius: SIZES.extraLarge,
+        padding: SIZES.small,
+        minWidth: minWidth,
+        ...props,
+      }}
+      onPress={handlePress}
+    >
+      <Text
+        style={{
+          fontFamily: FONTS.semiBold,
+          fontSize: fontSize,
+          color: COLORS.white,
+          textAlign: "center",
+        }}
+      >
+        Place bid in
+      </Text>
+    </TouchableOpacity>
   );
 };
